@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Барбершоп - Главная</title>
+</head>
+<body>
+    <h1>Добро пожаловать в наш Барбершоп!</h1>
+    
+    <h2>Наши мастера:</h2>
+    <ul>
+        {% for master in masters %}
+            <li>{{ master.name }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Наши услуги:</h2>
+    <ul>
+        {% for service in services %}
+            <li>{{ service }}</li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{% url 'orders_list' %}">Посмотреть все заявки</a>
+</body>
+</html>

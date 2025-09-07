@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список заявок</title>
+</head>
+<body>
+    <h1>Все заявки</h1>
+    
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Клиент</th>
+            <th>Мастер</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.client_name }}</td>
+            <td>
+                {% for master in masters %}
+                    {% if master.id == order.master_id %}
+                        {{ master.name }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                <a href="{% url 'order_detail' order.id %}">Подробнее</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br>
+    <a href="{% url 'landing' %}">На главную</a>
+</body>
+</html>
